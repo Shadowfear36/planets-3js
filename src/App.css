@@ -27,6 +27,9 @@ input{
   border-radius: 5px;
   padding-left: 8px;
 }
+.planet-wrapper {
+  width: 300px;
+}
 
 .planet-wrapper > * {
   margin: 0px;
@@ -36,6 +39,9 @@ input{
 .planet-wrapper > p {
   font-size: 30px;
   font-weight: 900;
+  width: 100%;
+  word-wrap: break-word;
+  height: 100px;
 }
 
 .overlay-container {

@@ -4,27 +4,30 @@ import { Html, useTexture } from '@react-three/drei';
 
 export default function Mars({inputState}) {
 
-    // const earthNorm = require('../textures/Earth_Normal.jpg');
-    // const earthMap = require('../textures/Earth_Diffuse.jpg');
+    const marsRef = useRef(null);
 
-    // const map = useTexture(earthMap);
-    // const normalMap = useTexture(earthNorm);
+    const marsNorm = require('../textures/Mars_Normal.png');
+    const marsMap = require('../textures/Mars_Color.png');
+    const marsMeta = require('../textures/Mars_Metallic.png');
+    const marsRough = require('../textures/Mars_Roughness.png');
 
-    const earthRef = useRef(null);
+    const map = useTexture(marsMap);
+    const normalMap = useTexture(marsNorm);
+    const metalMap = useTexture(marsMeta);
+    const roughMap = useTexture(marsRough);
 
     useFrame(() => {
-        earthRef.current.rotation.y -= 0.0015;
-        earthRef.current.rotation.x -= 0.0015;
+        marsRef.current.rotation.y -= 0.0015;
+        marsRef.current.rotation.x += 0.0025;
     })
 
     const marsRate = 0.38;
     
   return (
     <>  
-        <mesh ref={earthRef} scale={[1,1,1]} position={[5, .8, 0]}>
+        <mesh ref={marsRef} scale={[.7,.7,.7]} position={[5, .8, 0]}>
             <sphereGeometry />
-            {/* <meshStandardMaterial map={map} normalMap={normalMap}/> */}
-            <meshStandardMaterial/>
+            <meshStandardMaterial  map={map} rough={1} normalMap={normalMap} metalnessMap={metalMap} roughnessMap={roughMap} emmissive={1}/>
         </mesh>
 
         <Html

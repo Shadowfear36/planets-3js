@@ -4,11 +4,15 @@ import { Html, useTexture } from '@react-three/drei';
 
 export default function Earth({inputState}) {
 
-    const earthNorm = require('../textures/Earth_Normal.jpg');
-    const earthMap = require('../textures/Earth_Diffuse.jpg');
+    const earthNorm = require('../textures/Earth_OpenGL.png');
+    const earthMap = require('../textures/Earth_Color.png');
+    const earthMeta = require('../textures/Earth_Metallic.png');
+    const earthRough = require('../textures/Earth_Roughness.png');
 
     const map = useTexture(earthMap);
     const normalMap = useTexture(earthNorm);
+    const metalMap = useTexture(earthMeta);
+    const roughMap = useTexture(earthRough);
 
     const earthRef = useRef(null);
 
@@ -21,7 +25,7 @@ export default function Earth({inputState}) {
     <>  
         <mesh ref={earthRef} scale={[1,1,1]} position={[0, .8, 0]}>
             <sphereGeometry />
-            <meshStandardMaterial map={map} normalMap={normalMap}/>
+            <meshStandardMaterial  map={map} rough={1} normalMap={normalMap} metalnessMap={metalMap} roughnessMap={roughMap} emmissive={1}/>
         </mesh>
 
         <Html
