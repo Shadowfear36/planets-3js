@@ -64,17 +64,23 @@ input{
 .left {
   position: absolute;
   left: 25px;
-  top: 49%;
-  bottom: 49%;
+  top: 80%;
+  bottom: 20%;
   height: 50px;
 }
 
 .right {
   position: absolute;
   right: 25px;
-  top: 49%;
-  bottom: 49%;
+  top: 80%;
+  bottom: 20%;
   height: 50px;
+}
+
+button {
+  background-color: transparent;
+  color: white;
+  border: none;
 }
 
 .canvas {

@@ -19,12 +19,10 @@ export default function Saturn({inputState}) {
     // const metalMap = useTexture(jupiterMeta);
     // const roughMap = useTexture(jupiterRough);
 
-    // useFrame(() => {
-    //     saturnRef.current.rotation.y -= 0.0015;
-    //     saturnRef.current.rotation.x += 0.0005;
-    // })
-
-    console.log(fbxSaturn);
+    useFrame(() => {
+        saturnRef.current.rotation.y -= 0.0001;
+        saturnRef.current.rotation.x += 0.0000005;
+    })
 
     const saturnRate = 1.06;
     
@@ -34,7 +32,7 @@ export default function Saturn({inputState}) {
             <sphereGeometry />
             <meshStandardMaterial  map={map} rough={1} normalMap={normalMap} metalnessMap={metalMap} roughnessMap={roughMap} emmissive={1}/>
         </mesh> */}
-            <primitive object={fbxSaturn.scene}  position={[15, .8, 0]}/>
+            <primitive object={fbxSaturn.scene} ref={saturnRef} position={[15, .8, 0]}/>
         <Html
         as='div'
         wrapperClass={"planet-container"}

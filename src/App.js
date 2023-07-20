@@ -18,9 +18,15 @@ function App() {
 
   const [inputState, setInputState] = useState(0);
 
+  const [cameraPos, setCameraPos] = useState([0,0,0]);
+
   
   const inputChange = (e) => {
     setInputState(e.target.value)
+  }
+
+  const cameraChange = (arr) => {
+    setCameraPos(arr)
   }
 
 
@@ -30,8 +36,8 @@ function App() {
       <Canvas className="canvas">
         {/* TOOLS FOR DEVELOPMENT */}
         {/* <Stats/> */}
-        <axesHelper args={[5]}/>
-        <OrbitControls target={[15,0,0]}/>
+        {/* <axesHelper args={[5]}/> */}
+        <OrbitControls target={cameraPos} enablePan={false} position={cameraPos}/>
         {/* STAGEING AND OBJECTS */}
         <ambientLight intensity={2} />
         <Stars radius={100} depth={20} count={3500} factor={3} saturation={0} fade speed={1} />
@@ -47,7 +53,7 @@ function App() {
         <Neptune inputState={inputState}/>
         <Pluto inputState={inputState}/>
       </Canvas>
-      <Overlay inputState={inputState} inputChange={inputChange}/>
+      <Overlay inputState={inputState} inputChange={inputChange} cameraPos={cameraPos} cameraChange={cameraChange} />
     </div>
   );
 }
